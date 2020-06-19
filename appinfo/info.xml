@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>flow_notifications</id>
+	<name>Flow Notifications</name>
+	<summary><![CDATA[This app provides a notification actions for Nextcloud Flow]]></summary>
+	<description><![CDATA[This app provides a notification actions for Nextcloud Flow]]></description>
+	<version>1.0.0</version>
+	<licence>agpl</licence>
+	<author mail="blizzz@arthur-schiwon.de">Arthur Schiwon</author>
+	<namespace>FlowNotifications</namespace>
+	<category>workflow</category>
+	<website>https://github.com/nextcloud/flow_notifications</website>
+	<bugs>https://github.com/nextcloud/flow_notifications/issues</bugs>
+	<repository>https://github.com/nextcloud/flow_notifications.git</repository>
+	<dependencies>
+		<nextcloud min-version="20" max-version="20" />
+	</dependencies>
+</info>
