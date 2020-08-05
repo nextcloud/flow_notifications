@@ -24,6 +24,7 @@ declare(strict_types=1);
 
 namespace OCA\FlowNotifications\Flow;
 
+use DateTime;
 use OCA\FlowNotifications\AppInfo\Application;
 use OCP\EventDispatcher\Event;
 use OCP\IL10N;
@@ -31,13 +32,16 @@ use OCP\IURLGenerator;
 use OCP\IUser;
 use OCP\IUserSession;
 use OCP\Notification\IManager;
+use OCP\WorkflowEngine\EntityContext\IContextPortation;
 use OCP\WorkflowEngine\EntityContext\IDisplayText;
 use OCP\WorkflowEngine\EntityContext\IIcon;
 use OCP\WorkflowEngine\EntityContext\IUrl;
 use OCP\WorkflowEngine\IManager as FlowManager;
 use OCP\WorkflowEngine\IOperation;
 use OCP\WorkflowEngine\IRuleMatcher;
+use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
+use function json_encode;
 
 class Operation implements IOperation {
 
@@ -49,17 +53,21 @@ class Operation implements IOperation {
 	private $notificationManager;
 	/** @var IUserSession */
 	private $userSession;
+	/** @var LoggerInterface */
+	private $logger;
 
 	public function __construct(
 		IL10N $l,
 		IURLGenerator $urlGenerator,
 		IManager $notificationManager,
-		IUserSession $userSession
+		IUserSession $userSession,
+		LoggerInterface $logger
 	) {
 		$this->l = $l;
 		$this->urlGenerator = $urlGenerator;
 		$this->notificationManager = $notificationManager;
 		$this->userSession = $userSession;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -111,18 +119,27 @@ class Operation implements IOperation {
 				}
 
 				$entity = $ruleMatcher->getEntity();
+				$parameters = ['entityClass' => get_class($entity)];
+				if($entity instanceof IContextPortation) {
+					if(json_encode($entity->exportContextIDs()) !== false) {
+						$parameters['entityContext'] = $entity->exportContextIDs();
+					} else {
+						$this->logger->debug('Context of {entity} cannot be JSON-encoded',
+							[
+								'entity' => get_class($entity),
+							]
+						);
+					}
+				}
 
 				$notification = $this->notificationManager->createNotification();
 				$notification->setApp(Application::APP_ID)
 					->setIcon($entity instanceof IIcon ? $entity->getIconUrl() : $this->getIcon())
+					->setSubject($eventName, $parameters)
 					->setUser($uid)
-					->setSubject($entity->getName())
 					->setObject($flow['entity'], '0')
-					->setDateTime(new \DateTime());
+					->setDateTime(new DateTime());
 
-				if ($entity instanceof IDisplayText) {
-					$notification->setMessage($entity->getDisplayText(2));
-				}
 				if ($entity instanceof IUrl) {
 					$notification->setLink($entity->getUrl());
 				}

@@ -26,16 +26,23 @@ namespace OCA\FlowNotifications\Notification;
 
 use OCA\FlowNotifications\AppInfo\Application;
 use OCP\IL10N;
-use OCP\Notification\AlreadyProcessedException;
+use OCP\IServerContainer;
 use OCP\Notification\INotification;
 use OCP\Notification\INotifier;
+use OCP\WorkflowEngine\EntityContext\IContextPortation;
+use OCP\WorkflowEngine\EntityContext\IDisplayText;
+use OCP\WorkflowEngine\IEntity;
+use OCP\WorkflowEngine\IEntityEvent;
 
 class Notifier implements INotifier {
 	/** @var IL10N */
 	private $l;
+	/** @var IServerContainer */
+	private $container;
 
-	public function __construct(IL10N $l) {
+	public function __construct(IL10N $l, IServerContainer $container) {
 		$this->l = $l;
+		$this->container = $container;
 	}
 
 	/**
@@ -60,9 +67,27 @@ class Notifier implements INotifier {
 			throw new \InvalidArgumentException();
 		}
 
-		$notification
-			->setParsedSubject($notification->getSubject())
-			->setParsedMessage($notification->getMessage());
+		/** @var IEntity $entity */
+		$p = $notification->getSubjectParameters();
+		$entity = $this->container->get($p['entityClass']);
+		if($entity instanceof IContextPortation && isset($p['entityContext'])) {
+			$entity->importContextIDs($p['entityContext']);
+		}
+
+		foreach ($entity->getEvents() as $availableEvent) {
+			// this should be more comfortably provided by the Flow engine
+			if (!$availableEvent instanceof IEntityEvent) {
+				continue;
+			}
+			if($availableEvent->getEventName() === $notification->getSubject()) {
+				$notification->setParsedSubject($availableEvent->getDisplayName());
+				break;
+			}
+		}
+
+		if ($entity instanceof IDisplayText) {
+			$notification->setParsedMessage($entity->getDisplayText(2));
+		}
 
 		return $notification;
 	}
