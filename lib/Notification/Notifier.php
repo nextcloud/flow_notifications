@@ -85,7 +85,10 @@ class Notifier implements INotifier {
 				continue;
 			}
 			if($availableEvent->getEventName() === $notification->getSubject()) {
-				$notification->setParsedSubject($availableEvent->getDisplayName());
+				if(!empty($p['inscription'])) {
+					$p['inscription'] .= ': ';
+				}
+				$notification->setParsedSubject($p['inscription'] . $availableEvent->getDisplayName());
 				break;
 			}
 		}

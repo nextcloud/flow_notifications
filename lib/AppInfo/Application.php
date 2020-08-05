@@ -31,6 +31,8 @@ use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\EventDispatcher\IEventDispatcher;
+use OCP\Notification\IManager;
+use OCP\Util;
 use OCP\WorkflowEngine\Events\RegisterOperationsEvent;
 
 class Application extends App implements IBootstrap {
@@ -45,12 +47,15 @@ class Application extends App implements IBootstrap {
 
 	public function boot(IBootContext $context): void {
 		$container = $context->getServerContainer();
-		$container->getNotificationManager()->registerNotifierService(Notifier::class);
+		$container->get(IManager::class)->registerNotifierService(Notifier::class);
 
 		$dispatcher = $container->query(IEventDispatcher::class);
-		$dispatcher->addListener(RegisterOperationsEvent::class, function (RegisterOperationsEvent $event) {
-			$operation = \OC::$server->query(Operation::class);
-			$event->registerOperation($operation);
-		});
+		$dispatcher->addListener(RegisterOperationsEvent::class,
+				function (RegisterOperationsEvent $event) use ($container) {
+				$operation = $container->get(Operation::class);
+				$event->registerOperation($operation);
+				Util::addScript(self::APP_ID, 'flow_notifications-main');
+			}
+		);
 	}
 }

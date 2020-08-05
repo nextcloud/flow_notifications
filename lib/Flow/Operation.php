@@ -130,6 +130,12 @@ class Operation implements IOperation {
 					}
 				}
 
+				$flowOptions = \json_decode($flow['operation'], true);
+				if (!is_array($flowOptions) || empty($flowOptions)) {
+					throw new UnexpectedValueException('Cannot decode operation details');
+				}
+				$parameters['inscription'] = trim($flowOptions['inscription'] ?? '');
+
 				$notification = $this->notificationManager->createNotification();
 				$notification->setApp(Application::APP_ID)
 					->setSubject($eventName, $parameters)
