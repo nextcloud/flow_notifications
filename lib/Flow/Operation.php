@@ -33,8 +33,6 @@ use OCP\IUser;
 use OCP\IUserSession;
 use OCP\Notification\IManager;
 use OCP\WorkflowEngine\EntityContext\IContextPortation;
-use OCP\WorkflowEngine\EntityContext\IDisplayText;
-use OCP\WorkflowEngine\EntityContext\IIcon;
 use OCP\WorkflowEngine\EntityContext\IUrl;
 use OCP\WorkflowEngine\IManager as FlowManager;
 use OCP\WorkflowEngine\IOperation;
@@ -132,9 +130,14 @@ class Operation implements IOperation {
 					}
 				}
 
+				$flowOptions = \json_decode($flow['operation'], true);
+				if (!is_array($flowOptions) || empty($flowOptions)) {
+					throw new UnexpectedValueException('Cannot decode operation details');
+				}
+				$parameters['inscription'] = trim($flowOptions['inscription'] ?? '');
+
 				$notification = $this->notificationManager->createNotification();
 				$notification->setApp(Application::APP_ID)
-					->setIcon($entity instanceof IIcon ? $entity->getIconUrl() : $this->getIcon())
 					->setSubject($eventName, $parameters)
 					->setUser($uid)
 					->setObject($flow['entity'], '0')

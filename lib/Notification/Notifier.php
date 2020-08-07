@@ -27,10 +27,12 @@ namespace OCA\FlowNotifications\Notification;
 use OCA\FlowNotifications\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IServerContainer;
+use OCP\IURLGenerator;
 use OCP\Notification\INotification;
 use OCP\Notification\INotifier;
 use OCP\WorkflowEngine\EntityContext\IContextPortation;
 use OCP\WorkflowEngine\EntityContext\IDisplayText;
+use OCP\WorkflowEngine\EntityContext\IIcon;
 use OCP\WorkflowEngine\IEntity;
 use OCP\WorkflowEngine\IEntityEvent;
 
@@ -39,10 +41,13 @@ class Notifier implements INotifier {
 	private $l;
 	/** @var IServerContainer */
 	private $container;
+	/** @var IURLGenerator */
+	private $urlGenerator;
 
-	public function __construct(IL10N $l, IServerContainer $container) {
+	public function __construct(IL10N $l, IURLGenerator $urlGenerator, IServerContainer $container) {
 		$this->l = $l;
 		$this->container = $container;
+		$this->urlGenerator = $urlGenerator;
 	}
 
 	/**
@@ -80,7 +85,10 @@ class Notifier implements INotifier {
 				continue;
 			}
 			if($availableEvent->getEventName() === $notification->getSubject()) {
-				$notification->setParsedSubject($availableEvent->getDisplayName());
+				if(!empty($p['inscription'])) {
+					$p['inscription'] .= ': ';
+				}
+				$notification->setParsedSubject($p['inscription'] . $availableEvent->getDisplayName());
 				break;
 			}
 		}
@@ -88,6 +96,11 @@ class Notifier implements INotifier {
 		if ($entity instanceof IDisplayText) {
 			$notification->setParsedMessage($entity->getDisplayText(2));
 		}
+
+		$iconPath = $entity instanceof IIcon
+			? $entity->getIconUrl()
+			: $this->urlGenerator->imagePath('workflowengine', 'app-dark.svg');;
+		$notification->setIcon($this->urlGenerator->getAbsoluteURL($iconPath));
 
 		return $notification;
 	}
