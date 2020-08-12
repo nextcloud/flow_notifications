@@ -27,6 +27,9 @@ export default {
 	},
 	computed: {
 		currentInscription() {
+			if (!this.value) {
+				return ''
+			}
 			return JSON.parse(this.value).inscription
 		},
 	},
