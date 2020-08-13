@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2020 Arthur Schiwon <blizzz@arthur-schiwon.de>
@@ -75,7 +76,7 @@ class Notifier implements INotifier {
 		/** @var IEntity $entity */
 		$p = $notification->getSubjectParameters();
 		$entity = $this->container->get($p['entityClass']);
-		if($entity instanceof IContextPortation && isset($p['entityContext'])) {
+		if ($entity instanceof IContextPortation && isset($p['entityContext'])) {
 			$entity->importContextIDs($p['entityContext']);
 		}
 
@@ -84,8 +85,8 @@ class Notifier implements INotifier {
 			if (!$availableEvent instanceof IEntityEvent) {
 				continue;
 			}
-			if($availableEvent->getEventName() === $notification->getSubject()) {
-				if(!empty($p['inscription'])) {
+			if ($availableEvent->getEventName() === $notification->getSubject()) {
+				if (!empty($p['inscription'])) {
 					$p['inscription'] .= ': ';
 				}
 				$notification->setParsedSubject($p['inscription'] . $availableEvent->getDisplayName());
@@ -99,7 +100,8 @@ class Notifier implements INotifier {
 
 		$iconPath = $entity instanceof IIcon
 			? $entity->getIconUrl()
-			: $this->urlGenerator->imagePath('workflowengine', 'app-dark.svg');;
+			: $this->urlGenerator->imagePath('workflowengine', 'app-dark.svg');
+		;
 		$notification->setIcon($this->urlGenerator->getAbsoluteURL($iconPath));
 
 		return $notification;
