@@ -3,8 +3,17 @@
 	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
 	<id>flow_notifications</id>
 	<name>Flow Notifications</name>
-	<summary><![CDATA[This app provides a notification actions for Nextcloud Flow]]></summary>
-	<description><![CDATA[This app provides a notification actions for Nextcloud Flow]]></description>
+	<summary>Notification action for Nextcloud Flow></summary>
+	<description><![CDATA[Enable users to configure notifications with customized conditions in their Flow configuration.
+
+Users are empowered to configure a "Sent a notification" Flow in their personal settings. They can choose between the events being triggered, and other conditions like filetypes, assigned tags, time ranges and more. They can specify an inscription so that when the notification appears they will have context.
+
+![Notification Flow Configuration](https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/configuration.png)
+
+When an event happens where all conditions are apply, the user will receive a regular Nextcloud notification.
+
+![Flow Notification](https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/notification.png)
+]]></description>
 	<version>1.0.0</version>
 	<licence>agpl</licence>
 	<author mail="blizzz@arthur-schiwon.de">Arthur Schiwon</author>
@@ -13,6 +22,8 @@
 	<website>https://github.com/nextcloud/flow_notifications</website>
 	<bugs>https://github.com/nextcloud/flow_notifications/issues</bugs>
 	<repository>https://github.com/nextcloud/flow_notifications.git</repository>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/notification.png</screenshot>
+	<screenshot>https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/configuration.png</screenshot>
 	<dependencies>
 		<nextcloud min-version="20" max-version="20" />
 	</dependencies>
