@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2020 Arthur Schiwon <blizzz@arthur-schiwon.de>
@@ -118,8 +119,8 @@ class Operation implements IOperation {
 
 				$entity = $ruleMatcher->getEntity();
 				$parameters = ['entityClass' => get_class($entity)];
-				if($entity instanceof IContextPortation) {
-					if(json_encode($entity->exportContextIDs()) !== false) {
+				if ($entity instanceof IContextPortation) {
+					if (json_encode($entity->exportContextIDs()) !== false) {
 						$parameters['entityContext'] = $entity->exportContextIDs();
 					} else {
 						$this->logger->debug('Context of {entity} cannot be JSON-encoded',

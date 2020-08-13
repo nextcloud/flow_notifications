@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2020 Arthur Schiwon <blizzz@arthur-schiwon.de>
@@ -52,10 +53,10 @@ class Application extends App implements IBootstrap {
 		$dispatcher = $container->query(IEventDispatcher::class);
 		$dispatcher->addListener(RegisterOperationsEvent::class,
 				function (RegisterOperationsEvent $event) use ($container) {
-				$operation = $container->get(Operation::class);
-				$event->registerOperation($operation);
-				Util::addScript(self::APP_ID, 'flow_notifications-main');
-			}
+					$operation = $container->get(Operation::class);
+					$event->registerOperation($operation);
+					Util::addScript(self::APP_ID, 'flow_notifications-main');
+				}
 		);
 	}
 }
