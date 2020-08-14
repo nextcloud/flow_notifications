@@ -1,0 +1,7 @@
+{ "translations": {
+    "Sent a notification" : "Bir bildirim gönderildi",
+    "Triggers a notification" : "Bir bildirimi tetikler",
+    "Flow Notifications" : "Akış Bildirimleri",
+    "Choose a notification title (optional)" : "Bir bildirim başlığı seçin (isteğe bağlı)"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}
