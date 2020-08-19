@@ -6,7 +6,7 @@
 	<summary>Notification action for Nextcloud Flow</summary>
 	<description><![CDATA[Enable users to configure notifications with customized conditions in their Flow configuration.
 
-Users are empowered to configure a "Sent a notification" Flow in their personal settings. They can choose between the events being triggered, and other conditions like filetypes, assigned tags, time ranges and more. They can specify an inscription so that when the notification appears they will have context.
+Users are empowered to configure a "Send a notification" Flow in their personal settings. They can choose between the events being triggered, and other conditions like filetypes, assigned tags, time ranges and more. They can specify an inscription so that when the notification appears they will have context.
 
 ![Notification Flow Configuration](https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/configuration.png)
 
