@@ -73,7 +73,7 @@ class Operation implements IOperation {
 	 * @inheritDoc
 	 */
 	public function getDisplayName(): string {
-		return $this->l->t('Sent a notification');
+		return $this->l->t('Send a notification');
 	}
 
 	/**
