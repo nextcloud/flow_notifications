@@ -98,11 +98,16 @@ class Notifier implements INotifier {
 			$notification->setParsedMessage($entity->getDisplayText(2));
 		}
 
-		$iconPath = $entity instanceof IIcon
+		$iconUrl = $entity instanceof IIcon
 			? $entity->getIconUrl()
 			: $this->urlGenerator->imagePath('workflowengine', 'app-dark.svg');
 		;
-		$notification->setIcon($this->urlGenerator->getAbsoluteURL($iconPath));
+		if (empty($iconUrl) || isset(parse_url($iconUrl)['scheme'])) {
+			// foreign sources would fail to display due to content security policy
+			$iconUrl = $this->urlGenerator->imagePath('workflowengine', 'app-dark.svg');
+		}
+
+		$notification->setIcon($iconUrl);
 
 		return $notification;
 	}
