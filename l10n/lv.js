@@ -1,7 +1,6 @@
 OC.L10N.register(
     "flow_notifications",
     {
-    "Sent a notification" : "Sūtīt ziņojumu",
     "Triggers a notification" : "Darbināt ziņojumu",
     "Flow Notifications" : "Flow Ziņojumi",
     "Choose a notification title (optional)" : "Izvēlieties paziņojumu nosaukumu (izvēles)"

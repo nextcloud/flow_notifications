@@ -1,0 +1,7 @@
+{ "translations": {
+    "Triggers a notification" : "Creëert een melding",
+    "Flow Notifications" : "Flow Meldingen",
+    "Notification action for Nextcloud Flow" : "Meldingsactie voor Nextcloud Flow",
+    "Choose a notification title (optional)" : "Kies een meldingstitel (optioneel)"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

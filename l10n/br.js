@@ -1,0 +1,11 @@
+OC.L10N.register(
+    "flow_notifications",
+    {
+    "Send a notification" : "Kas ur gemenadenn",
+    "Triggers a notification" : "Distignañ ar gemenadennoù",
+    "Flow Notifications" : "Red Kemenadennoù",
+    "Notification action for Nextcloud Flow" : "Ober kemenadennoù evit Red Nextcloud",
+    "Enable users to configure notifications with customized conditions in their Flow configuration.\n\nUsers are empowered to configure a \"Send a notification\" Flow in their personal settings. They can choose between the events being triggered, and other conditions like filetypes, assigned tags, time ranges and more. They can specify an inscription so that when the notification appears they will have context.\n\n![Notification Flow Configuration](https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/configuration.png)\n\nWhen an event happens where all conditions are apply, the user will receive a regular Nextcloud notification.\n\n![Flow Notification](https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/notification.png)" : "Aotreit an implijourienn da stummañ kemenadennoù gant doareoù personelet en ho arventenn Red\n\nPosupl e vo d'an implijourienn da stummañ ho red \"Kas ur gemenadenn\" en ho arventennoù personel. Gallout a vo dezho choaz etre an darvoudoù distignet, ha doareoù all evel ar stumm restr, lakaat klavioù, ar prantad ha muioc'h choaz. Gallout a reont resisaat un enskrivadur evit kaout un aroud pa zeu war well ur gemenadenn.\n\n![Notification Flow Configuration](https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/configuration.png)\n\nPa c'hoarvez un dra lec'h ma ez eo mat pep doare, resevet e vo gant an implijer ur gemenadenn Nextcloud.\n\n![Flow Notification](https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/notification.png)",
+    "Choose a notification title (optional)" : "Choazit un titl kemenadenn (ouzhpenn)"
+},
+"nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);");
