@@ -145,7 +145,10 @@ class Operation implements IOperation {
 					->setDateTime(new DateTime());
 
 				if ($entity instanceof IUrl) {
-					$notification->setLink($entity->getUrl());
+					$url = $entity->getUrl();
+					if ($url === '') {
+						$notification->setLink($url);
+					}
 				}
 
 				$this->notificationManager->notify($notification);
