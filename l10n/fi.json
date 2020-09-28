@@ -1,0 +1,5 @@
+{ "translations": {
+    "Send a notification" : "Lähetä ilmoitus",
+    "Choose a notification title (optional)" : "Valitse ilmoituksen otsikko (valinnainen)"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
