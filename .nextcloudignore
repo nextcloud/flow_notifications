@@ -8,6 +8,7 @@ composer.*
 .gitignore
 issue_template.md
 krankerl.toml
+.l10nignore
 Makefile
 .nextcloudignore
 node_modules
