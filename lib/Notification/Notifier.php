@@ -25,6 +25,7 @@ declare(strict_types=1);
 
 namespace OCA\FlowNotifications\Notification;
 
+use InvalidArgumentException;
 use OCA\FlowNotifications\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IServerContainer;
@@ -70,7 +71,7 @@ class Notifier implements INotifier {
 	 */
 	public function prepare(INotification $notification, string $languageCode): INotification {
 		if ($notification->getApp() !== Application::APP_ID) {
-			throw new \InvalidArgumentException();
+			throw new InvalidArgumentException();
 		}
 
 		/** @var IEntity $entity */
@@ -101,7 +102,7 @@ class Notifier implements INotifier {
 		$iconUrl = $entity instanceof IIcon
 			? $entity->getIconUrl()
 			: $this->urlGenerator->imagePath('workflowengine', 'app-dark.svg');
-		;
+
 		if (empty($iconUrl) || isset(parse_url($iconUrl)['scheme'])) {
 			// foreign sources would fail to display due to content security policy
 			$iconUrl = $this->urlGenerator->imagePath('workflowengine', 'app-dark.svg');

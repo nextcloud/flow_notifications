@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<input type="text"
-			max-length="80"
+			maxlength="80"
 			:placeholder="placeholder"
 			:value="currentInscription"
 			@input="emitInput">

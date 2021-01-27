@@ -50,7 +50,7 @@ class Application extends App implements IBootstrap {
 		$container = $context->getServerContainer();
 		$container->get(IManager::class)->registerNotifierService(Notifier::class);
 
-		$dispatcher = $container->query(IEventDispatcher::class);
+		$dispatcher = $container->get(IEventDispatcher::class);
 		$dispatcher->addListener(RegisterOperationsEvent::class,
 				function (RegisterOperationsEvent $event) use ($container) {
 					$operation = $container->get(Operation::class);

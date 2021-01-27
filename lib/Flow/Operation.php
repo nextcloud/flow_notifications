@@ -40,6 +40,7 @@ use OCP\WorkflowEngine\IOperation;
 use OCP\WorkflowEngine\IRuleMatcher;
 use Psr\Log\LoggerInterface;
 use UnexpectedValueException;
+use function json_decode;
 use function json_encode;
 
 class Operation implements IOperation {
@@ -131,7 +132,7 @@ class Operation implements IOperation {
 					}
 				}
 
-				$flowOptions = \json_decode($flow['operation'], true);
+				$flowOptions = json_decode($flow['operation'], true);
 				if (!is_array($flowOptions) || empty($flowOptions)) {
 					throw new UnexpectedValueException('Cannot decode operation details');
 				}
