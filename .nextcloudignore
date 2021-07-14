@@ -1,3 +1,4 @@
+babel.config.js
 composer.*
 .drone.yml
 .editorconfig
