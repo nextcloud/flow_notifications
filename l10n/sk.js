@@ -1,7 +1,7 @@
 OC.L10N.register(
     "flow_notifications",
     {
-    "Send a notification" : "Odošlať upozornenie",
+    "Send a notification" : "Odoslať upozornenie",
     "Triggers a notification" : "Spúšťače a upozorňovanie",
     "Flow Notifications" : "Uporňovanie vo Flow (Toku)",
     "Notification action for Nextcloud Flow" : "Akcia oznámenia pre Nextcloud Flow",
