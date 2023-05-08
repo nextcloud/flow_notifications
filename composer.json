@@ -2,7 +2,9 @@
     "name": "nextcloud/flow_notifications",
     "type": "project",
     "require-dev": {
-        "nextcloud/coding-standard": "^1.1"
+        "nextcloud/coding-standard": "^1.1",
+        "vimeo/psalm": "^5.11",
+        "nextcloud/ocp": "dev-master"
     },
     "license": "AGPLv3",
     "config": {
@@ -13,6 +15,9 @@
 	"scripts": {
 		"lint": "find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
-		"cs:fix": "php-cs-fixer fix"
+		"cs:fix": "php-cs-fixer fix",
+		"psalm": "psalm",
+		"psalm:fix": "psalm --alter --issues=InvalidReturnType,InvalidNullableReturnType,MissingParamType,InvalidFalsableReturnType",
+		"psalm:update-baseline": "psalm --update-baseline"
 	}
 }
