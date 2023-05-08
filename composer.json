@@ -2,10 +2,14 @@
     "name": "nextcloud/flow_notifications",
     "type": "project",
     "require-dev": {
-        "nextcloud/coding-standard": "^0.3.0"
+        "nextcloud/coding-standard": "^1.1"
     },
     "license": "AGPLv3",
-    "require": {},
+    "config": {
+		"platform": {
+			"php": "8.0"
+		}
+	},
 	"scripts": {
 		"lint": "find . -name \\*.php -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
