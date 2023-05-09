@@ -49,7 +49,7 @@ class Operation implements IOperation {
 		private IURLGenerator $urlGenerator,
 		private IManager $notificationManager,
 		private IUserSession $userSession,
-		private LoggerInterface $logger
+		private LoggerInterface $logger,
 	) {
 	}
 

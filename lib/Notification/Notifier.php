@@ -43,7 +43,7 @@ class Notifier implements INotifier {
 	public function __construct(
 		private IL10N $l,
 		private IURLGenerator $urlGenerator,
-		private ContainerInterface $container
+		private ContainerInterface $container,
 	) {
 	}
 
