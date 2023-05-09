@@ -1,5 +1,5 @@
 node_modules
 js
-.php_cs.cache
+.php-cs-fixer.cache
 /build/
 /vendor/

@@ -52,11 +52,11 @@ class Application extends App implements IBootstrap {
 
 		$dispatcher = $container->get(IEventDispatcher::class);
 		$dispatcher->addListener(RegisterOperationsEvent::class,
-				function (RegisterOperationsEvent $event) use ($container) {
-					$operation = $container->get(Operation::class);
-					$event->registerOperation($operation);
-					Util::addScript(self::APP_ID, 'flow_notifications-main');
-				}
+			function (RegisterOperationsEvent $event) use ($container) {
+				$operation = $container->get(Operation::class);
+				$event->registerOperation($operation);
+				Util::addScript(self::APP_ID, 'flow_notifications-main');
+			}
 		);
 	}
 }

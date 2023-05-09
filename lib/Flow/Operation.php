@@ -44,30 +44,13 @@ use function json_decode;
 use function json_encode;
 
 class Operation implements IOperation {
-
-	/** @var IL10N */
-	private $l;
-	/** @var IURLGenerator */
-	private $urlGenerator;
-	/** @var IManager */
-	private $notificationManager;
-	/** @var IUserSession */
-	private $userSession;
-	/** @var LoggerInterface */
-	private $logger;
-
 	public function __construct(
-		IL10N $l,
-		IURLGenerator $urlGenerator,
-		IManager $notificationManager,
-		IUserSession $userSession,
-		LoggerInterface $logger
+		private IL10N $l,
+		private IURLGenerator $urlGenerator,
+		private IManager $notificationManager,
+		private IUserSession $userSession,
+		private LoggerInterface $logger,
 	) {
-		$this->l = $l;
-		$this->urlGenerator = $urlGenerator;
-		$this->notificationManager = $notificationManager;
-		$this->userSession = $userSession;
-		$this->logger = $logger;
 	}
 
 	/**
@@ -114,7 +97,7 @@ class Operation implements IOperation {
 			try {
 				$uid = $flow['scope_actor_id'];
 				$sessionUser = $this->userSession->getUser();
-				if ($sessionUser instanceof IUser && $uid ===$sessionUser->getUID()) {
+				if ($sessionUser instanceof IUser && $uid === $sessionUser->getUID()) {
 					continue;
 				}
 
@@ -153,7 +136,7 @@ class Operation implements IOperation {
 				}
 
 				$this->notificationManager->notify($notification);
-			} catch (UnexpectedValueException $e) {
+			} catch (UnexpectedValueException) {
 				continue;
 			}
 		}

@@ -28,7 +28,6 @@ namespace OCA\FlowNotifications\Notification;
 use InvalidArgumentException;
 use OCA\FlowNotifications\AppInfo\Application;
 use OCP\IL10N;
-use OCP\IServerContainer;
 use OCP\IURLGenerator;
 use OCP\Notification\INotification;
 use OCP\Notification\INotifier;
@@ -37,19 +36,15 @@ use OCP\WorkflowEngine\EntityContext\IDisplayText;
 use OCP\WorkflowEngine\EntityContext\IIcon;
 use OCP\WorkflowEngine\IEntity;
 use OCP\WorkflowEngine\IEntityEvent;
+use Psr\Container\ContainerInterface;
 
 class Notifier implements INotifier {
-	/** @var IL10N */
-	private $l;
-	/** @var IServerContainer */
-	private $container;
-	/** @var IURLGenerator */
-	private $urlGenerator;
 
-	public function __construct(IL10N $l, IURLGenerator $urlGenerator, IServerContainer $container) {
-		$this->l = $l;
-		$this->container = $container;
-		$this->urlGenerator = $urlGenerator;
+	public function __construct(
+		private IL10N $l,
+		private IURLGenerator $urlGenerator,
+		private ContainerInterface $container,
+	) {
 	}
 
 	/**
