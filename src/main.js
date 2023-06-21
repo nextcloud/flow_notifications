@@ -4,7 +4,7 @@
  * @license AGPL-3.0-or-later
  */
 
-import FlowNotify from './views/FlowNotify'
+import FlowNotify from './views/FlowNotify.vue'
 
 window.OCA.WorkflowEngine.registerOperator({
 	id: 'OCA\\FlowNotifications\\Flow\\Operation',
