@@ -1,15 +1,15 @@
 {
-    "name": "nextcloud/flow_notifications",
-    "type": "project",
-    "require-dev": {
-        "nextcloud/coding-standard": "^1.1",
-        "vimeo/psalm": "^5.11",
-        "nextcloud/ocp": "dev-master"
-    },
-    "license": "AGPLv3",
-    "config": {
+	"name": "nextcloud/flow_notifications",
+	"type": "project",
+	"require-dev": {
+		"nextcloud/coding-standard": "^1.1",
+		"vimeo/psalm": "^5.11",
+		"nextcloud/ocp": "dev-master"
+	},
+	"license": "AGPLv3",
+	"config": {
 		"platform": {
-			"php": "8.0"
+			"php": "8.1"
 		}
 	},
 	"scripts": {
