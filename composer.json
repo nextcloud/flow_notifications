@@ -9,7 +9,7 @@
     "license": "AGPLv3",
     "config": {
 		"platform": {
-			"php": "8.0"
+			"php": "8.0.2"
 		}
 	},
 	"scripts": {
