@@ -23,28 +23,30 @@ declare(strict_types=1);
  *
  */
 
-namespace OCA\FlowNotifications\AppInfo;
+namespace OCA\FlowNotifications\Listener;
 
-use OCA\FlowNotifications\Listener\RegisterOperationsListener;
-use OCA\FlowNotifications\Notification\Notifier;
-use OCP\AppFramework\App;
-use OCP\AppFramework\Bootstrap\IBootContext;
-use OCP\AppFramework\Bootstrap\IBootstrap;
-use OCP\AppFramework\Bootstrap\IRegistrationContext;
+use OCA\FlowNotifications\AppInfo\Application;
+use OCA\FlowNotifications\Flow\Operation;
+use OCP\EventDispatcher\Event;
+use OCP\EventDispatcher\IEventListener;
+use OCP\Util;
 use OCP\WorkflowEngine\Events\RegisterOperationsEvent;
 
-class Application extends App implements IBootstrap {
-	public const APP_ID = 'flow_notifications';
-
-	public function __construct() {
-		parent::__construct(self::APP_ID);
+/**
+ * @template-implements IEventListener<Event|RegisterOperationsEvent>
+ */
+class RegisterOperationsListener implements IEventListener {
+	public function __construct(
+		protected readonly Operation $operation
+	) {
 	}
 
-	public function register(IRegistrationContext $context): void {
-		$context->registerNotifierService(Notifier::class);
-		$context->registerEventListener(RegisterOperationsEvent::class, RegisterOperationsListener::class);
-	}
+	public function handle(Event $event): void {
+		if (!$event instanceof RegisterOperationsEvent) {
+			return;
+		}
 
-	public function boot(IBootContext $context): void {
+		$event->registerOperation($this->operation);
+		Util::addScript(Application::APP_ID, 'flow_notifications-main');
 	}
 }

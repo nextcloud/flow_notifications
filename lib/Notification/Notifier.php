@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * @copyright Copyright (c) 2020 Arthur Schiwon <blizzz@arthur-schiwon.de>
+ * @copyright Copyright (c) 2024 Arthur Schiwon <blizzz@arthur-schiwon.de>
  *
  * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
  *
@@ -41,9 +41,9 @@ use Psr\Container\ContainerInterface;
 class Notifier implements INotifier {
 
 	public function __construct(
-		private IL10N $l,
-		private IURLGenerator $urlGenerator,
-		private ContainerInterface $container,
+		private readonly IL10N $l,
+		private readonly IURLGenerator $urlGenerator,
+		private readonly ContainerInterface $container,
 	) {
 	}
 
