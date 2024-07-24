@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * @copyright Copyright (c) 2020 Arthur Schiwon <blizzz@arthur-schiwon.de>
+ * @copyright Copyright (c) 2024 Arthur Schiwon <blizzz@arthur-schiwon.de>
  *
  * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
  *
@@ -45,11 +45,11 @@ use function json_encode;
 
 class Operation implements IOperation {
 	public function __construct(
-		private IL10N $l,
-		private IURLGenerator $urlGenerator,
-		private IManager $notificationManager,
-		private IUserSession $userSession,
-		private LoggerInterface $logger,
+		private readonly IL10N $l,
+		private readonly IURLGenerator $urlGenerator,
+		private readonly IManager $notificationManager,
+		private readonly IUserSession $userSession,
+		private readonly LoggerInterface $logger,
 	) {
 	}
 
