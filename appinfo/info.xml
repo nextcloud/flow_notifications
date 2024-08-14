@@ -14,7 +14,7 @@ When an event happens where all conditions are apply, the user will receive a re
 
 ![Flow Notification](https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/notification.png)
 ]]></description>
-	<version>1.10.0</version>
+	<version>2.0.0</version>
 	<licence>agpl</licence>
 	<author mail="blizzz@arthur-schiwon.de">Arthur Schiwon</author>
 	<namespace>FlowNotifications</namespace>
@@ -25,6 +25,6 @@ When an event happens where all conditions are apply, the user will receive a re
 	<screenshot>https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/notification.png</screenshot>
 	<screenshot>https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/configuration.png</screenshot>
 	<dependencies>
-		<nextcloud min-version="30" max-version="30" />
+		<nextcloud min-version="31" max-version="31" />
 	</dependencies>
 </info>
