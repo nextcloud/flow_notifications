@@ -37,7 +37,7 @@ use OCP\WorkflowEngine\Events\RegisterOperationsEvent;
  */
 class RegisterOperationsListener implements IEventListener {
 	public function __construct(
-		protected readonly Operation $operation
+		protected readonly Operation $operation,
 	) {
 	}
 
