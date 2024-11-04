@@ -4,6 +4,8 @@
 -->
 # Nextcloud Flow Notifications
 
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/flow_notifications)](https://api.reuse.software/info/github.com/nextcloud/flow_notifications)
+
 **📝 Notification action for Nextcloud Flow**
 
 ### 🔩 Configure your flow
