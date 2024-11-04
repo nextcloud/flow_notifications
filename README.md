@@ -1,4 +1,10 @@
+<!--
+  - SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: AGPL-3.0-or-later
+-->
 # Nextcloud Flow Notifications
+
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/flow_notifications)](https://api.reuse.software/info/github.com/nextcloud/flow_notifications)
 
 **📝 Notification action for Nextcloud Flow**
 

@@ -1,7 +1,6 @@
 /**
- * @copyright Copyright (c) 2020 Arthur Schiwon <blizzz@arthur-schiwon.de>
- * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
- * @license AGPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
 import FlowNotify from './views/FlowNotify.vue'
