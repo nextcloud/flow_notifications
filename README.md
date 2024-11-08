@@ -14,6 +14,8 @@
 ### 🔔 Receive notifications
 ![](screenshots/notification.png)
 
+💡 To use the `Flow Notifications` app, ensure that the [Notifications](https://github.com/nextcloud/notifications) app is installed and enabled. The `Notifications` app provides the necessary APIs for the `Flow Notifications` app to work correctly.
+
 ## 🏗 Development setup
 
 1. ☁ Clone this app into the `apps` folder of your Nextcloud: `git clone https://github.com/nextcloud/flow_notifications.git`
