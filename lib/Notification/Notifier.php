@@ -25,12 +25,12 @@ declare(strict_types=1);
 
 namespace OCA\FlowNotifications\Notification;
 
-use InvalidArgumentException;
 use OCA\FlowNotifications\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Notification\INotification;
 use OCP\Notification\INotifier;
+use OCP\Notification\UnknownNotificationException;
 use OCP\WorkflowEngine\EntityContext\IContextPortation;
 use OCP\WorkflowEngine\EntityContext\IDisplayText;
 use OCP\WorkflowEngine\EntityContext\IIcon;
@@ -66,7 +66,7 @@ class Notifier implements INotifier {
 	 */
 	public function prepare(INotification $notification, string $languageCode): INotification {
 		if ($notification->getApp() !== Application::APP_ID) {
-			throw new InvalidArgumentException();
+			throw new UnknownNotificationException();
 		}
 
 		/** @var IEntity $entity */
