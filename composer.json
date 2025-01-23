@@ -4,7 +4,7 @@
 	"require-dev": {
 		"nextcloud/coding-standard": "^1.1",
 		"vimeo/psalm": "^5.11",
-		"nextcloud/ocp": "dev-master"
+		"nextcloud/ocp": "dev-stable31"
 	},
 	"license": "AGPLv3",
 	"config": {
