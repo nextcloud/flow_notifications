@@ -4,10 +4,10 @@
 -->
 <template>
 	<div>
-		<input type="text"
+		<input v-model="currentInscription"
+			type="text"
 			maxlength="80"
 			:placeholder="placeholder"
-			:value="currentInscription"
 			@input="emitInput">
 	</div>
 </template>
@@ -18,11 +18,12 @@ export default {
 	name: 'FlowNotify',
 	components: {},
 	props: {
-		value: {
-			default: JSON.stringify({ inscription: '' }),
+		modelValue: {
+			default: '',
 			type: String,
 		},
 	},
+	emits: ['update:model-value'],
 	data() {
 		return {
 			inscription: '',
@@ -31,17 +32,18 @@ export default {
 	},
 	computed: {
 		currentInscription() {
-			if (!this.value) {
+			if (!this.modelValue) {
 				return ''
 			}
-			return JSON.parse(this.value).inscription
+			return JSON.parse(this.modelValue).inscription
 		},
 	},
 	methods: {
 		emitInput(value) {
-			if (value !== null) {
-				this.$emit('input', JSON.stringify({ inscription: value.target.value }))
+			if (value === null) {
+				return
 			}
+			this.$emit('update:model-value', JSON.stringify({ inscription: value.target.value }))
 		},
 	},
 }
