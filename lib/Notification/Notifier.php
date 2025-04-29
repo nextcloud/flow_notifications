@@ -81,9 +81,18 @@ class Notifier implements INotifier {
 			? $entity->getIconUrl()
 			: $this->urlGenerator->imagePath('workflowengine', 'app-dark.svg');
 
-		if (empty($iconUrl) || isset(parse_url($iconUrl)['scheme'])) {
+		$baseUrl = $this->urlGenerator->getBaseUrl();
+		$isForeignHost = filter_var($iconUrl, FILTER_VALIDATE_URL)
+			&& !str_starts_with($iconUrl, $baseUrl);
+
+		if (empty($iconUrl) || $isForeignHost) {
 			// foreign sources would fail to display due to content security policy
 			$iconUrl = $this->urlGenerator->imagePath('workflowengine', 'app-dark.svg');
+		}
+
+		// we need an absolute URL for support in clients
+		if (!isset(parse_url($iconUrl)['scheme'])) {
+			$iconUrl = $this->urlGenerator->getAbsoluteURL($iconUrl);
 		}
 
 		$notification->setIcon($iconUrl);
