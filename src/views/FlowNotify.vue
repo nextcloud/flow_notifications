@@ -1,10 +1,9 @@
 <template>
 	<div>
-		<input v-model="currentInscription"
+		<input v-model="inscription"
 			type="text"
 			maxlength="80"
-			:placeholder="placeholder"
-			@input="emitInput">
+			:placeholder="placeholder">
 	</div>
 </template>
 
@@ -18,28 +17,31 @@ export default {
 			default: '',
 			type: String,
 		},
+		value: {
+			default: '',
+			type: String,
+		},
 	},
-	emits: ['update:model-value'],
+	emits: ['input', 'update:model-value'],
 	data() {
+		const inscription = (this.modelValue || this.value)
+			? JSON.parse(this.modelValue || this.value).inscription
+			: ''
 		return {
-			inscription: '',
+			inscription,
 			placeholder: t('flow_notifications', 'Choose a notification title (optional)'),
 		}
 	},
-	computed: {
-		currentInscription() {
-			if (!this.modelValue) {
-				return ''
-			}
-			return JSON.parse(this.modelValue).inscription
+	watch: {
+		modelValue() {
+			this.inscription = JSON.parse(this.modelValue || this.value).inscription
 		},
-	},
-	methods: {
-		emitInput(value) {
-			if (value === null) {
-				return
-			}
-			this.$emit('update:model-value', JSON.stringify({ inscription: value.target.value }))
+		value() {
+			this.inscription = JSON.parse(this.modelValue || this.value).inscription
+		},
+		inscription() {
+			this.$emit('input', JSON.stringify({ inscription: this.inscription }))
+			this.$emit('update:model-value', JSON.stringify({ inscription: this.inscription }))
 		},
 	},
 }
