@@ -1,10 +1,9 @@
 <template>
 	<div>
-		<input type="text"
+		<input v-model="inscription"
+			type="text"
 			maxlength="80"
-			:placeholder="placeholder"
-			:value="currentInscription"
-			@input="emitInput">
+			:placeholder="placeholder">
 	</div>
 </template>
 
@@ -14,30 +13,35 @@ export default {
 	name: 'FlowNotify',
 	components: {},
 	props: {
+		modelValue: {
+			default: '',
+			type: String,
+		},
 		value: {
-			default: JSON.stringify({ inscription: '' }),
+			default: '',
 			type: String,
 		},
 	},
+	emits: ['input', 'update:model-value'],
 	data() {
+		const inscription = (this.modelValue || this.value)
+			? JSON.parse(this.modelValue || this.value).inscription
+			: ''
 		return {
-			inscription: '',
+			inscription,
 			placeholder: t('flow_notifications', 'Choose a notification title (optional)'),
 		}
 	},
-	computed: {
-		currentInscription() {
-			if (!this.value) {
-				return ''
-			}
-			return JSON.parse(this.value).inscription
+	watch: {
+		modelValue() {
+			this.inscription = JSON.parse(this.modelValue || this.value).inscription
 		},
-	},
-	methods: {
-		emitInput(value) {
-			if (value !== null) {
-				this.$emit('input', JSON.stringify({ inscription: value.target.value }))
-			}
+		value() {
+			this.inscription = JSON.parse(this.modelValue || this.value).inscription
+		},
+		inscription() {
+			this.$emit('input', JSON.stringify({ inscription: this.inscription }))
+			this.$emit('update:model-value', JSON.stringify({ inscription: this.inscription }))
 		},
 	},
 }
