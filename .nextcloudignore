@@ -1,5 +1,6 @@
 # SPDX-FileCopyrightText: 2020 Nextcloud GmbH and Nextcloud contributors
 # SPDX-License-Identifier: AGPL-3.0-or-later
+babel.config.js
 composer.*
 .drone.yml
 .editorconfig
@@ -14,14 +15,17 @@ krankerl.toml
 Makefile
 .nextcloudignore
 node_modules
+.php-cs-fixer.dist.php
 .php_cs.cache
 .php_cs.dist
 phpunit.*
 package.json
 package-lock.json
+psalm.xml
 screenshots
 .scrutinizer.yml
 src
+.stylelintrc.js
 stylelint.config.js
 tests
 .travis.yml
