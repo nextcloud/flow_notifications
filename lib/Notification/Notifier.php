@@ -21,18 +21,22 @@ use OCP\WorkflowEngine\IEntity;
 use OCP\WorkflowEngine\IEntityEvent;
 use Psr\Container\ContainerInterface;
 
-class Notifier implements INotifier {
+/**
+ * @psalm-api
+ */
+readonly class Notifier implements INotifier {
 
 	public function __construct(
-		private readonly IL10N $l,
-		private readonly IURLGenerator $urlGenerator,
-		private readonly ContainerInterface $container,
+		private IL10N $l,
+		private IURLGenerator $urlGenerator,
+		private ContainerInterface $container,
 	) {
 	}
 
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getID(): string {
 		return Application::APP_ID;
 	}
@@ -40,6 +44,7 @@ class Notifier implements INotifier {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getName(): string {
 		return $this->l->t('Flow Notifications');
 	}
@@ -47,6 +52,7 @@ class Notifier implements INotifier {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function prepare(INotification $notification, string $languageCode): INotification {
 		if ($notification->getApp() !== Application::APP_ID) {
 			throw new UnknownNotificationException();

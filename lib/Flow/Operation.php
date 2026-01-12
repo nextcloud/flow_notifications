@@ -26,19 +26,23 @@ use UnexpectedValueException;
 use function json_decode;
 use function json_encode;
 
-class Operation implements IOperation {
+/**
+ * @psalm-api
+ */
+readonly class Operation implements IOperation {
 	public function __construct(
-		private readonly IL10N $l,
-		private readonly IURLGenerator $urlGenerator,
-		private readonly IManager $notificationManager,
-		private readonly IUserSession $userSession,
-		private readonly LoggerInterface $logger,
+		private IL10N $l,
+		private IURLGenerator $urlGenerator,
+		private IManager $notificationManager,
+		private IUserSession $userSession,
+		private LoggerInterface $logger,
 	) {
 	}
 
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getDisplayName(): string {
 		return $this->l->t('Send a notification');
 	}
@@ -46,6 +50,7 @@ class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getDescription(): string {
 		return $this->l->t('Triggers a notification');
 	}
@@ -53,6 +58,7 @@ class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getIcon(): string {
 		return $this->urlGenerator->imagePath('notifications', 'notifications.svg');
 	}
@@ -60,6 +66,7 @@ class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function isAvailableForScope(int $scope): bool {
 		return $scope === FlowManager::SCOPE_USER;
 	}
@@ -67,6 +74,7 @@ class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function validateOperation(string $name, array $checks, string $operation): void {
 		// pass
 	}
@@ -74,6 +82,7 @@ class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function onEvent(string $eventName, Event $event, IRuleMatcher $ruleMatcher): void {
 		$flows = $ruleMatcher->getFlows(false);
 		foreach ($flows as $flow) {
