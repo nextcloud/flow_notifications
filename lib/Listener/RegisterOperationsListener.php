@@ -19,6 +19,7 @@ use Psr\Log\LoggerInterface;
 
 /**
  * @template-implements IEventListener<Event|RegisterOperationsEvent>
+ * @psalm-api
  */
 class RegisterOperationsListener implements IEventListener {
 	public function __construct(
@@ -28,6 +29,7 @@ class RegisterOperationsListener implements IEventListener {
 	) {
 	}
 
+	#[\Override]
 	public function handle(Event $event): void {
 		if (!$event instanceof RegisterOperationsEvent) {
 			return;

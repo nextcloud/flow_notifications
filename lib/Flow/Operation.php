@@ -26,6 +26,9 @@ use UnexpectedValueException;
 use function json_decode;
 use function json_encode;
 
+/**
+ * @psalm-api
+ */
 readonly class Operation implements IOperation {
 	public function __construct(
 		private IL10N $l,
@@ -39,6 +42,7 @@ readonly class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getDisplayName(): string {
 		return $this->l->t('Send a notification');
 	}
@@ -46,6 +50,7 @@ readonly class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getDescription(): string {
 		return $this->l->t('Triggers a notification');
 	}
@@ -53,6 +58,7 @@ readonly class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function getIcon(): string {
 		return $this->urlGenerator->imagePath('notifications', 'notifications.svg');
 	}
@@ -60,6 +66,7 @@ readonly class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function isAvailableForScope(int $scope): bool {
 		return $scope === FlowManager::SCOPE_USER;
 	}
@@ -67,6 +74,7 @@ readonly class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function validateOperation(string $name, array $checks, string $operation): void {
 		// pass
 	}
@@ -74,6 +82,7 @@ readonly class Operation implements IOperation {
 	/**
 	 * @inheritDoc
 	 */
+	#[\Override]
 	public function onEvent(string $eventName, Event $event, IRuleMatcher $ruleMatcher): void {
 		$flows = $ruleMatcher->getFlows(false);
 		foreach ($flows as $flow) {
