@@ -26,13 +26,13 @@ use UnexpectedValueException;
 use function json_decode;
 use function json_encode;
 
-class Operation implements IOperation {
+readonly class Operation implements IOperation {
 	public function __construct(
-		private readonly IL10N $l,
-		private readonly IURLGenerator $urlGenerator,
-		private readonly IManager $notificationManager,
-		private readonly IUserSession $userSession,
-		private readonly LoggerInterface $logger,
+		private IL10N $l,
+		private IURLGenerator $urlGenerator,
+		private IManager $notificationManager,
+		private IUserSession $userSession,
+		private LoggerInterface $logger,
 	) {
 	}
 

@@ -21,12 +21,12 @@ use OCP\WorkflowEngine\IEntity;
 use OCP\WorkflowEngine\IEntityEvent;
 use Psr\Container\ContainerInterface;
 
-class Notifier implements INotifier {
+readonly class Notifier implements INotifier {
 
 	public function __construct(
-		private readonly IL10N $l,
-		private readonly IURLGenerator $urlGenerator,
-		private readonly ContainerInterface $container,
+		private IL10N $l,
+		private IURLGenerator $urlGenerator,
+		private ContainerInterface $container,
 	) {
 	}
 

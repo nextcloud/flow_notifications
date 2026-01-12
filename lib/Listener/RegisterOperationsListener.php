@@ -31,7 +31,8 @@ class RegisterOperationsListener implements IEventListener {
 	public function handle(Event $event): void {
 		if (!$event instanceof RegisterOperationsEvent) {
 			return;
-		} elseif (!$this->appManager->isEnabledForUser('notifications')) {
+		}
+		if (!$this->appManager->isEnabledForUser('notifications')) {
 			$this->logger->error('Failed to register `flow_notifications` app. This could happen due to the `notifications` app isn\'t installed or enabled.', ['app' => 'flow_notifications']);
 			return;
 		}
