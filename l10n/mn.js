@@ -1,0 +1,10 @@
+OC.L10N.register(
+    "flow_notifications",
+    {
+    "Send a notification" : "Мэдэгдэл илгээх",
+    "Triggers a notification" : "Мэдэгдэл идэвхжүүлэх",
+    "Flow Notifications" : "Урсгалын мэдэгдлүүд",
+    "Notification action for Nextcloud Flow" : "Nextcloud Flow-д зориулсан мэдэгдлийн үйлдэл",
+    "Choose a notification title (optional)" : "Мэдэгдлийн гарчиг сонгох (заавал биш)"
+},
+"nplurals=2; plural=(n != 1);");
