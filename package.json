@@ -1,6 +1,6 @@
 {
   "name": "flow_notifications",
-  "version": "5.0.0-dev.0",
+  "version": "5.0.0-beta.1",
   "description": "",
   "main": "src/main.js",
   "directories": {
