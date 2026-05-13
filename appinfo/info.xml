@@ -20,7 +20,7 @@ When an event happens where all conditions are apply, the user will receive a re
 
 ![Flow Notification](https://raw.githubusercontent.com/nextcloud/flow_notifications/master/screenshots/notification.png)
 ]]></description>
-	<version>5.0.0-dev.0</version>
+	<version>5.0.0-beta.1</version>
 	<licence>agpl</licence>
 	<author mail="blizzz@arthur-schiwon.de">Arthur Schiwon</author>
 	<namespace>FlowNotifications</namespace>
