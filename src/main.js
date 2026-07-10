@@ -6,7 +6,7 @@
 import { defineCustomElement } from 'vue'
 import FlowNotify from './views/FlowNotify.vue'
 
-const FlowNotifyComponent = defineCustomElement(FlowNotify)
+const FlowNotifyComponent = defineCustomElement(FlowNotify, { shadowRoot: false })
 const customElementId = 'oca-flow_notifications-operation-flow_notify'
 window.customElements.define(customElementId, FlowNotifyComponent)
 
