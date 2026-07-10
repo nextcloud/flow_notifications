@@ -4,7 +4,7 @@ babel.config.js
 composer.*
 .drone.yml
 .editorconfig
-.eslintrc.js
+eslint.config.js
 .git
 .gitattributes
 .github
@@ -25,10 +25,9 @@ psalm.xml
 screenshots
 .scrutinizer.yml
 src
-.stylelintrc.js
-stylelint.config.js
+stylelint.config.cjs
 tests
 .travis.yml
 .tx
-webpack.js
+vite.config.js
 
