@@ -4,7 +4,8 @@
 -->
 <template>
 	<div>
-		<input v-model="currentInscription"
+		<input
+			v-model="currentInscription"
 			type="text"
 			maxlength="80"
 			:placeholder="placeholder"
@@ -23,13 +24,15 @@ export default {
 			type: String,
 		},
 	},
-	emits: ['update:model-value'],
+
+	emits: ['update:modelValue'],
 	data() {
 		return {
 			inscription: '',
 			placeholder: t('flow_notifications', 'Choose a notification title (optional)'),
 		}
 	},
+
 	computed: {
 		currentInscription() {
 			if (!this.modelValue) {
@@ -38,12 +41,13 @@ export default {
 			return JSON.parse(this.modelValue).inscription
 		},
 	},
+
 	methods: {
 		emitInput(value) {
 			if (value === null) {
 				return
 			}
-			this.$emit('update:model-value', JSON.stringify({ inscription: value.target.value }))
+			this.$emit('update:modelValue', JSON.stringify({ inscription: value.target.value }))
 		},
 	},
 }
