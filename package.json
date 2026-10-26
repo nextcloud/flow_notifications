@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/nextcloud/flow_notifications#readme",
   "dependencies": {
-    "vue": "^3.5.43"
+    "vue": "^3.5.44"
   },
   "browserslist": [
     "extends @nextcloud/browserslist-config"
