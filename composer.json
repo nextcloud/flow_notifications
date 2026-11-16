@@ -3,7 +3,7 @@
 	"type": "project",
 	"require-dev": {
 		"nextcloud/coding-standard": "^1.1",
-		"vimeo/psalm": "^6.14",
+		"vimeo/psalm": "^7.0",
 		"nextcloud/ocp": "dev-master"
 	},
 	"license": "AGPLv3",
